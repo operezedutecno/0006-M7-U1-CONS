@@ -4,7 +4,7 @@ const pool= new Pool(
     {
         user:"postgres",
         password:"postgres",
-        database:"consolidacion",
+        database:"bootcamp0006",
         host: "localhost",
         port: 5432
     }
@@ -52,4 +52,18 @@ const actualizar = async (bootcamp) => {
 
 }
 
-module.exports={consultar, registrar, actualizar}
+const eliminar = async (id) => {
+    const config = {
+        text: "DELETE FROM bootcamps WHERE id = $1 RETURNING *",
+        values:[id]
+    }
+
+    try {
+        const respuesta= await pool.query(config);
+        return respuesta.rows
+    } catch (error) {
+        return {error: error.message};
+    }
+}
+
+module.exports={consultar, registrar, actualizar, eliminar }
