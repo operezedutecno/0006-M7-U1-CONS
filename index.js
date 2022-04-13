@@ -1,5 +1,5 @@
 const express = require('express');
-const { consultar, registrar }= require('./bootcamps.js');
+const { consultar, registrar, actualizar }= require('./bootcamps.js');
 
 const app = express();
 
@@ -23,4 +23,8 @@ app.post("/bootcamps", async (request, response) => {
     const respuesta = await registrar(bootcamp);
     response.json(respuesta);
 })
-
+app.put("/bootcamps", async (req, res) => {
+    const bootcamp = req.body;
+    const respuesta = await actualizar(bootcamp);
+    res.json(respuesta);
+})

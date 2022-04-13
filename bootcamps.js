@@ -4,7 +4,7 @@ const pool= new Pool(
     {
         user:"postgres",
         password:"postgres",
-        database:"bootcamp0006",
+        database:"consolidacion",
         host: "localhost",
         port: 5432
     }
@@ -36,4 +36,20 @@ const registrar = async (bootcamp) => {
     }
 }
 
-module.exports={consultar, registrar}
+const actualizar = async (bootcamp) => {
+    const { id, lenguaje_id, turno_id, agno, codigo} = bootcamp;
+    const config = {
+        text: "UPDATE bootcamps set lenguaje_id=$1, turno_id=$2, agno=$3, codigo=$4 where id = $5 returning *",
+        values: [lenguaje_id, turno_id, agno, codigo, id]
+    }
+
+    try {
+        const respuesta= await pool.query(config);
+        return respuesta.rows
+    } catch (error) {
+        return {error: error.message};
+    }
+
+}
+
+module.exports={consultar, registrar, actualizar}
