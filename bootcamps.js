@@ -1,12 +1,12 @@
 const { Pool } = require('pg');
 
 const pool= new Pool(
-   {
-    user:"postgres",
-    password:"leoney31",
-    database:"always_music",
-    host: "localhost",
-    port: 5432
+    {
+        user:"postgres",
+        password:"postgres",
+        database:"bootcamp0006",
+        host: "localhost",
+        port: 5432
     }
 );
 
@@ -21,4 +21,19 @@ const consultar= async()=>{
     return respuesta
 }
 
-module.exports={consultar}
+const registrar = async (bootcamp) => {
+    const { lenguaje_id, turno_id, agno, codigo} = bootcamp;
+    const config = {
+        text: "INSERT INTO bootcamps(lenguaje_id, turno_id, agno, codigo) VALUES($1, $2, $3, $4) RETURNING *",
+        values: [lenguaje_id, turno_id, agno, codigo]
+    }
+
+    try {
+        const respuesta= await pool.query(config);
+        return respuesta.rows
+    } catch (error) {
+        return {error: error.message};
+    }
+}
+
+module.exports={consultar, registrar}
