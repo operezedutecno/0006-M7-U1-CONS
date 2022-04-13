@@ -1,0 +1,25 @@
+{
+  "name": "0006-m7-u1-cons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operezedutecno/0006-M7-U1-CONS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/operezedutecno/0006-M7-U1-CONS/issues"
+  },
+  "homepage": "https://github.com/operezedutecno/0006-M7-U1-CONS#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "yargs": "^17.4.1"
+  }
+}

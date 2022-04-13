@@ -22,3 +22,5 @@ create table bootcamps(
 insert into turnos (nombre) values ('diurno'), ('vespertino');
 
 insert into lenguajes (nombre) values ('JavaScript'), ('Java'), ('Python');
+
+insert into bootcamps (codigo, agno, lenguaje_id, turno_id) values('0006', 2021, 1, 2);
